@@ -1,14 +1,29 @@
+/*
+* pubsub_mqtt_MULTITOPIC.INO
+* Marlon Soares Sigales
+* 
+* Código para NodeMCU se subscrever e publicar em tópicos em um Broker controlando suas saídas digitais
+* Code for NodeMCU to publish and subscribe topics in an Broker, controling your digital IOs.  https://www.instructables.com/id/IoT-With-NodeMCU-and-MQTT/
+* 30/09/2020
+* 
+* Utilizado/Uses lib PubSubClient=> pubsubclient.knolleary.net/
+* 
+*
+* Este projeto pode ser utilizado, modificado sem fins comerciais desde que referênciado.
+* This project can be used, modified without commercial purposes as long as referenced.
+*/
+
 //---------------includes--------------------------------
 #include <ESP8266WiFi.h> 
 #include <PubSubClient.h>
 #include <user_interface.h> //lib to use timer 
   
 //----------------WiFi------------------------------------ 
-const char* SSID =  "OP1_3'9";          //WiFi name SSID
-const char* PASSWORD = "j4v4l1j4v4l1";    //WIFi password
+const char* SSID =  "AAAAAAAAAAAAA";          //WiFi name SSID            MODIFIE HERE!!!!! 
+const char* PASSWORD = "*******************";    //WIFi password          MODIFIE HERE!!!!!
 WiFiClient wifiClient; 
 //----------------------Mqtt-------------------------------
-const char* BROKER_MQTT = "192.168.0.80";  //broker MQTT IP
+const char* BROKER_MQTT = "xxx.xxx.0.xx";  //broker MQTT IP or URL         MODIFIE HERE!!!!!
 int BROKER_PORT = 1883;                    // Broker MQTT port
 
 //------ Instance MQTT client - with object espClient/wifiClient ------
@@ -17,9 +32,9 @@ PubSubClient client (BROKER_MQTT, BROKER_PORT, wifiClient); //instace fully conf
 
 
 //-------- defines -------------------------------------------
-#define ID_MQTT  "Noh01"             //ID for this node
-#define TOPIC_PUBLISH0   "PNoh01_0"  //button topic 
-#define TOPIC_PUBLISH3   "PNoh01_A"  //analogic topic
+#define ID_MQTT  "AAA01"             //ID for this node                  MODIFIE HERE!!!!! only with 3 letters an 2 numbers
+#define TOPIC_PUBLISH0   "PAAA01_0"  //button topic 
+#define TOPIC_PUBLISH3   "PAAA01_A"  //analogic topic
 //pin define
 #define D8 15//D8
 #define D0 16//D0
@@ -34,15 +49,15 @@ PubSubClient client (BROKER_MQTT, BROKER_PORT, wifiClient); //instace fully conf
 
 os_timer_t tmr0; //create timer named tmr0
 //-------------global var-------------------------------------
-bool cont = LOW;    //counter for timer
-const char* substopic[] ={"SNoh01_0",   //#0    
-                          "SNoh01_1",   //#1
-                          "SNoh01_2",   //#2
-                          "SNoh01_3",   //#3
-                          "SNoh01_4",   //#4
-                          "SNoh01_5",   //#5
-                          "SNoh01_6",   //#6
-                          "SNoh01_7"    //#7
+bool cont = LOW;    //counter for timer                               MODIFIE HERE!!!!! the AAA is the ID_mqtt
+const char* substopic[] ={"SAAA01_0",   //#0    
+                          "SAAA01_1",   //#1
+                          "SAAA01_2",   //#2
+                          "SAAA01_3",   //#3
+                          "SAAA01_4",   //#4
+                          "SAAA01_5",   //#5
+                          "SAAA01_6",   //#6
+                          "SAAA01_7"    //#7
                                            };
 
 //----------functions n' interruptions-------------------------- 
